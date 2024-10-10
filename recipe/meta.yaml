@@ -1,0 +1,57 @@
+{% set name = "trulens-core" %}
+{% set version = "1.0.7" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/trulens_core-{{ version }}.tar.gz
+  sha256: bfbadd53a5a5d17575a8855f3fd888cad47912eb53fc4b0f27487ad341ba9971
+
+build:
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+  skip: true  # [py<39]
+
+requirements:
+  host:
+    - python
+    - poetry-core
+    - pip
+  run:
+    - python
+    - numpy >=1.23
+    - munch >=2.5.0,<3.0.0
+    - dill >=0.3.8
+    - typing_extensions >=4.9.0,<5.0.0
+    - pydantic >=2.0.0,<3.0.0
+    - pandas >=2.1.0,<3.0.0
+    - rich >=13.6.0,<14.0.0
+    - sqlalchemy >=2.0.0,<3.0.0
+    - alembic >=1.8.1,<2.0.0
+    - nest-asyncio >=1.5.0,<2.0.0
+    - python-dotenv >=0.21,<2.0
+
+test:
+  imports:
+    - trulens
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://trulens.org/
+  summary: Evaluation and Tracking for LLM Experiments 
+  description: |
+    Library to systematically track and evaluate LLM based applications.
+  license: MIT
+  license_file: LICENSE
+  dev_url: https://github.com/truera/trulens
+  doc_url: https://trulens.org/getting_started
+  
+
+extra:
+  recipe-maintainers:
+    - psteyer
