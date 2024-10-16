@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/trulens_core-{{ version }}.tar.gz
-  sha256: bfbadd53a5a5d17575a8855f3fd888cad47912eb53fc4b0f27487ad341ba9971
+  sha256: 739ca935c4945f8859e1d16ee8ac518cca820bbe26e5273b506b4705d618942f 
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
